@@ -7,3 +7,11 @@ django-admin startproject imcrm // to create/template django project
 python manage.py startapp website // to create an app (smaller component of a project)
 add the app you just created (website) in settings.py, change database to mysql
 
+python mydb.py // to check for the database connection
+go to mysql workbench and now refresh the schemas! you can find your schema there
+
+python manage.py migrate // after connecting to database, we need to push it into django
+
+winpty python manage.py createsuperuser // to create a superuser or admin
+python manage.py runserver // to run the server
+
