@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'imcrm.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'thorappan',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'NAME': 'give a name',
+        'USER': 'give the db user name',
+        'PASSWORD': 'give your password',
     }
 }
 
