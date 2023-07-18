@@ -1,0 +1,49 @@
+# Ignore database files
+*.sqlite3
+*.db
+
+# Ignore static and media files
+staticfiles/
+media/
+
+# Ignore temporary files
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.swp
+*~
+
+# Ignore sensitive information
+*.env
+*.env.*
+*.secret_key
+*.config
+
+# Ignore IDE and editor-specific files
+.vscode/
+.idea/
+*.sublime*
+*.pyc
+
+# Ignore local development settings
+local_settings.py
+
+# Ignore secret keys and credentials
+*.key
+*.pem
+
+# Ignore log files
+*.log
+
+# Ignore compiled translations
+locale/
+
+# Ignore migrations
+*/migrations/
+
+# Ignore node_modules for frontend dependencies
+node_modules/
+
+# Ignore the virtual env folder
+virt/

@@ -1,0 +1,9 @@
+python -m venv virt // to setup virtual env
+virt/Scripts/activate // to activate the virtual environment
+pip install django // to install django
+pip install mysql // to install mysql
+pip install mysql-connector-python // connection to mysql
+django-admin startproject imcrm // to create/template django project
+python manage.py startapp website // to create an app (smaller component of a project)
+add the app you just created (website) in settings.py, change database to mysql
+
