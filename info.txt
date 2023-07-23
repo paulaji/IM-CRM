@@ -15,3 +15,5 @@ python manage.py migrate // after connecting to database, we need to push it int
 winpty python manage.py createsuperuser // to create a superuser or admin
 python manage.py runserver // to run the server
 
+NOTE: before running the server, click on the run button in the manage.py file, this will activate the virtual environment,then navigate into dir with manage.py and then
+python manage.py
