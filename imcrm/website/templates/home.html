@@ -1,4 +1,11 @@
 <!-- specify below to which page we need add this child component to -->
 {% extends 'base.html' %} {% block content %}
-<h1>Namaskaaram!</h1>
+<!-- creating a login form -->
+<div class="col-md-6 offset-md-3">
+  <h1>Login</h1>
+  <form method="POST" action="{% url 'home' %}">
+    <!-- csrf token is such that hackers don't hack when we submit our form -->
+    {% csrf_token %}
+  </form>
+</div>
 {% endblock %}
