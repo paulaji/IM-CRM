@@ -2,10 +2,34 @@
 {% extends 'base.html' %} {% block content %}
 <!-- creating a login form -->
 <div class="col-md-6 offset-md-3">
-  <h1>Login</h1>
+  <br />
+  <!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
+  <h4>Login to your account</h4>
+  <br />
+  <!-- </div> -->
   <form method="POST" action="{% url 'home' %}">
-    <!-- csrf token is such that hackers don't hack when we submit our form -->
+    <!-- csrf token is such that hackers don't hack when we submit our form, it stands for Cross-Site Request Forgery -->
     {% csrf_token %}
+    <form>
+      <div class="mb-3">
+        <!-- <label for="exampleInputEmail1" class="form-label">Username</label> -->
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          placeholder="username"
+        />
+      </div>
+      <div class="mb-3">
+        <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
+        <input type="password" class="form-control" placeholder="password" />
+      </div>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button type="submit" class="btn btn-outline-success btn-sm">
+          login
+        </button>
+      </div>
+    </form>
   </form>
 </div>
 {% endblock %}
