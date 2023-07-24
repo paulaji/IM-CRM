@@ -7,7 +7,7 @@
   <!-- django has inbuilt features to check whether a user is logged in or not -->
   <!-- damn django -->
   {% if user.is_authenticated %}
-  <h2>Hi, Welcome to Kurukkanmoola {{ user.username }}</h2>
+  <h2>Welcome, {{ user.username }}!</h2>
   {% else %}
   <!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
   <h4>Login to your account</h4>
