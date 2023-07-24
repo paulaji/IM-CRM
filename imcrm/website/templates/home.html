@@ -3,6 +3,12 @@
 <!-- creating a login form -->
 <div class="col-md-6 offset-md-3">
   <br />
+  <!-- if user is authenticated and logged in, we print hello world and wrap the other things inside an else statement -->
+  <!-- django has inbuilt features to check whether a user is logged in or not -->
+  <!-- damn django -->
+  {% if user.is_authenticated %}
+  <h2>Hi, Welcome to Kurukkanmoola {{ user.username }}</h2>
+  {% else %}
   <!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
   <h4>Login to your account</h4>
   <br />
@@ -18,11 +24,18 @@
           class="form-control"
           name="username"
           placeholder="username"
+          required
         />
       </div>
       <div class="mb-3">
         <!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
-        <input type="password" class="form-control" placeholder="password" />
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          placeholder="password"
+          required
+        />
       </div>
       <div class="d-grid gap-2 col-6 mx-auto">
         <button type="submit" class="btn btn-outline-success btn-sm">
@@ -31,5 +44,6 @@
       </div>
     </form>
   </form>
+  {% endif %}
 </div>
 {% endblock %}
