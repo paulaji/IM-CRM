@@ -5,6 +5,7 @@ pip install mysql // to install mysql
 pip install mysql-connector-python // connection to mysql
 django-admin startproject imcrm // to create/template django project
 python manage.py startapp website // to create an app (smaller component of a project)
+inside the app, we created (in this case, called website), we can create static named folder to serve static files such css, js or images
 add the app you just created (website) in settings.py, change database to mysql
 
 python mydb.py // to check for the database connection
@@ -21,3 +22,4 @@ OR
 do it the programmers way
 .\virt\Scripts\activate // this command in the root dir will activate the virtual environment
 then cd into the dir with the main file and // python manage.py runserver  // voila!
+
