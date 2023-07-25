@@ -20,6 +20,11 @@ def home(request):
             login(request, user) # login the user!
             messages.success(request, "Login successful!") # flash a message to indicate successful login
             return redirect('home') # we dont need to explicitly type home.html, django will do that for us, we have defined home in urls.py too
+        # now is the case where login authenitcation was not successfull!
+        else:
+            messages.error(request, "Please check your username and password. There was an error logging in!")
+            return redirect('home')
+
     # till now, we have checked whether POST method was done to the login form!
     # if the method is GET, that is, we are simply visiting and not doing anything, we just render the home.html page!
     else:
