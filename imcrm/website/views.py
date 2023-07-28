@@ -34,4 +34,8 @@ def home(request):
 
 # creating logout view
 def logout_user(request):
-    pass
+    # we can use the imported logout function from the django auth library
+    # it automatically figures out whether a use is logged in and if yes, it can logout
+    logout(request)
+    messages.info(request, "You have been logged out!")
+    return redirect('home')
