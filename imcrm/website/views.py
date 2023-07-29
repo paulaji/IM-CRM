@@ -39,3 +39,9 @@ def logout_user(request):
     logout(request)
     messages.info(request, "You have been logged out!")
     return redirect('home')
+
+# creating register user view
+def register_user(request):
+    # we render register.html template
+    # render and redirect work differently
+    return render(request, 'register.html', {})
