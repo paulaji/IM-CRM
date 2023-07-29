@@ -14,13 +14,11 @@
     <link rel="stylesheet" href="{% static 'messages.css' %}" />
   </head>
   <body>
-    <!-- we are using jinja templating -->
+    <!-- we are using django templating -->
     <!-- first, we need to include the navbar component/page as a whole -->
     <!-- it  uses block and include -->
     <!-- using include, we can include whole pages or components in the part -->
     {% include 'navbar.html' %}
-    <!-- using block, we are deriving a child class here, the child class can be defined elsewhere in another page -->
-    <!-- below we use content as the child class name, so in another html page, we need to define content -->
     <div class="container">
       <br />
       <!-- we have declared flash messages in the views.py, we need to display that here -->
@@ -76,6 +74,8 @@
         </div>
         {% endif %} {% endfor %} {% endif %}
       </div>
+      <!-- using block, we are deriving a child class here, the child class can be defined elsewhere in another page -->
+      <!-- below we use content as the child class name, so in another html page, we need to define content -->
       {% block content %} {% endblock %}
     </div>
     <script
