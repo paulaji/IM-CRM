@@ -23,3 +23,5 @@ do it the programmers way
 .\virt\Scripts\activate // this command in the root dir will activate the virtual environment
 then cd into the dir with the main file and // python manage.py runserver  // voila!
 
+NOTE: we can always add new users through the django admin panel, for small projects, this will do
+but here, we can look at manual ways to register users (preferring the django method though!)
