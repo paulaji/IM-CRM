@@ -8,5 +8,7 @@ urlpatterns = [
     # setting up the route for login and logout
     # we are calling the routes login_user and logout_user because login and logout are keywords from a library that we will import, refer to the views.py for clarification
     # path('login/', views.login_user, name='login'),
-    path('logout/', views.logout_user, name='logout')
+    path('logout/', views.logout_user, name='logout'),
+    # manually writing a register user functionality, we can always use the django admin panel to add more users
+    path('register/', views.register_user, name="register")
 ]
