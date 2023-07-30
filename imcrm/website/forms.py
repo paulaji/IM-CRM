@@ -43,3 +43,25 @@ class SignUpForm(UserCreationForm):
     # by calling super, we allow SignUpForm to inherit and utilize properties of the UserCreationForm class, the super class from which we are deriving SignUpForm class whilst also allowing us to make the necessary customizations
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
+
+        # till now, we had fields email, firstname and lastname which are default to the UserCreationForm
+        # we inherited those
+        # now we want to customize our class SignUpForm by adding few more fields
+
+        self.fields['username'].widget.attrs['class'] = 'form-control'
+        self.fields['username'].widget.attrs['placeholder'] = 'username'
+        self.fields['username'].label = ''
+        self.fields['username'].help_text = '<span class="form-text text-muted"><small>Required. Enter a unique username. This will be used for your login. Letters, digits and @/./+/-/_ only.</small></span>'
+
+        self.fields['password1'].widget.attrs['class'] = 'form-control'
+        self.fields['password1'].widget.attrs['placeholder'] = 'enter your password'
+        self.fields['password1'].widget.label = ''
+        self.fields['password1'].help_text = '<span class="form-text text-muted"><small>Enter a strong password. It should contain at least 8 characters and a mix of letters, digits, and special characters.</small></span>'
+
+        self.fields['password1'].widget.attrs['class'] = 'form-control'
+        self.fields['password1'].widget.attrs['placeholder'] = 're-enter your password'
+        self.fields['password1'].widget.label = ''
+        self.fields['password1'].help_text = '<span class="form-text text-muted"><small>Re-enter your password for confirmation.</small></span>'
+
+
+
