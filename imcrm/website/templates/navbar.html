@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <!-- notice how we gave href in a django templating style -->
+    <!-- notice how we gave href in a jinja2 templating style -->
     <a class="navbar-brand" href="{% url 'home' %}">IM/CRM</a>
     <button
       class="navbar-toggler"
@@ -44,7 +44,7 @@
           <a
             class="nav-link"
             style="color: beige; font-size: small"
-            href="{% url 'home' %}"
+            href="{% url 'register' %}"
             >Register</a
           >
         </li>
