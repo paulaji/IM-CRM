@@ -1,4 +1,5 @@
 # using the django built-in registration/CreateUserForm to create registration forms!
+# after creating forms, we can go to views.py and just call what we created
 # again kudos Django!!!
 
 # importing the user creation form from django!
@@ -56,7 +57,7 @@ class SignUpForm(UserCreationForm):
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['placeholder'] = 'enter your password'
         self.fields['password1'].widget.label = ''
-        self.fields['password1'].help_text = '<span class="form-text text-muted"><small>Enter a strong password. It should contain at least 8 characters and a mix of letters, digits, and special characters.</small></span>'
+        self.fields['password1'].help_text = '<span class="form-text text-muted"><small>Enter a strong password.</small></span>'
 
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['placeholder'] = 're-enter your password'
