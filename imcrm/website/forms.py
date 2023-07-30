@@ -26,8 +26,20 @@ class SignUpForm(UserCreationForm):
 
     # now we decalre a Meta class to define how the form should be processed and additional information about the form etc.
     # Meta class is a way to give metadata to the form
+    # Meta class is a nested or inner class because it comes inside the SignUpForm class
     class Meta:
         # now we declare what data model the form is associated with
         model = User
         # now we declare the order in which the fields of the form should appear
         fields = ("username", "first_name", "last_name", "email", "password1", "password2")
+
+    # init is a special method or can be called a constructor/object/instance of a class
+    # this constructor is called when we want to create an object of class SignUpForm
+    # in our case, SignUpForm is inheriting from UserCreationForm, therefore we may not want to use every properites of the class UserCreationForm, but may want to customize it and use it! so, for this customization, we use the init method
+    # self refers to that specific instance we are creating
+    # it can be used to access or modify the instance
+    # args is non-keyword arguments we would like to pass
+    # kwargs is keyword arguments we would like to pass
+    # by calling super, we allow SignUpForm to inherit and utilize properties of the UserCreationForm class, the super class from which we are deriving SignUpForm class whilst also allowing us to make the necessary customizations
+    def __init__(self, *args, **kwargs):
+        super(SignUpForm, self).__init__(*args, **kwargs)
