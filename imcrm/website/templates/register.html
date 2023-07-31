@@ -8,9 +8,24 @@
 <!-- creating a registration form -->
 <div class="col-md-6 offset-md-3">
   <form method="POST" action="">
-    <!-- we render the form as an html paragraph using the below statement -->
     <!-- django would know which form to use since in our views.py, we rendered this html page, register.html inside register_user view which contains our form -->
-    {% csrf_token %} {{ form.as_p }}
+    {% csrf_token %}
+    <!-- if form has errors, we display those errors -->
+    <!-- django has built-in form field error checking mechanism -->
+    {% if form.errors %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      Your Form Has Errors {% for field in form %} {% if field.errors %} {{
+      field.errors }} {% endif %} {% endfor %}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endif %}
+    <!-- we render the form as an html paragraph using the below statement -->
+    {{ form.as_p }}
     <button type="submit" class="btn btn-dark btn-sm">register now</button>
   </form>
 </div>
