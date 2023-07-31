@@ -11,9 +11,7 @@
     <!-- we render the form as an html paragraph using the below statement -->
     <!-- django would know which form to use since in our views.py, we rendered this html page, register.html inside register_user view which contains our form -->
     {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn btn-outline-success btn-sm">
-      sign up now
-    </button>
+    <button type="submit" class="btn btn-dark btn-sm">register now</button>
   </form>
 </div>
 
