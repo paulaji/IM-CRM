@@ -59,10 +59,10 @@ class SignUpForm(UserCreationForm):
         self.fields['password1'].widget.label = ''
         self.fields['password1'].help_text = '<span class="form-text text-muted"><small>Enter a strong password.</small></span>'
 
-        self.fields['password1'].widget.attrs['class'] = 'form-control'
-        self.fields['password1'].widget.attrs['placeholder'] = 're-enter your password'
-        self.fields['password1'].widget.label = ''
-        self.fields['password1'].help_text = '<span class="form-text text-muted"><small>Re-enter your password for confirmation.</small></span>'
+        self.fields['password2'].widget.attrs['class'] = 'form-control'
+        self.fields['password2'].widget.attrs['placeholder'] = 're-enter your password'
+        self.fields['password2'].widget.label = ''
+        self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Re-enter your password for confirmation.</small></span>'
 
 
 
