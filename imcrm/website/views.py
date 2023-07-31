@@ -70,6 +70,9 @@ def register_user(request):
         # in this part, user is not POSTing anything, therefore we need to render the register.html and provide an empty form
         # therefore we pass in / create the form instance {'form': form}
         return render(request, 'register.html', {'form': form})
+    
+    return render(request, 'register.html', {'form': form})
+
 
 
     
