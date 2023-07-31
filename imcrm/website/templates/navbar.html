@@ -35,6 +35,20 @@
             >
           </button>
         </li>
+        <!-- condition where we need to hide the Sign Up button in the navbar if we are in the register.html page -->
+        {% elif request.resolver_match.url_name == 'register' %}
+        <!-- adding the register user button/link if the user didnt login -->
+        <li
+          class="nav-item"
+          style="border: 1px solid beige; border-radius: 5px"
+        >
+          <a
+            class="nav-link"
+            style="color: beige; font-size: small"
+            href="{% url 'home' %}"
+            >Login</a
+          >
+        </li>
         {% else %}
         <!-- adding the register user button/link if the user didnt login -->
         <li
@@ -45,7 +59,7 @@
             class="nav-link"
             style="color: beige; font-size: small"
             href="{% url 'register' %}"
-            >Register</a
+            >Sign Up</a
           >
         </li>
         {% endif %}
