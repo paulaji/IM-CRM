@@ -1,4 +1,20 @@
 <!-- specify below to which page we need add this child component to -->
 {% extends 'base.html' %} {% block content %}
-<h1>Namaskaaram!</h1>
+<br />
+<div class="d-grid gap-2 col-6 mx-auto">
+  <h4 style="font-weight: 400; color: #777">Sign Up for an account</h4>
+  <br />
+</div>
+<!-- creating a registration form -->
+<div class="col-md-6 offset-md-3">
+  <form method="POST" action="">
+    <!-- we render the form as an html paragraph using the below statement -->
+    <!-- django would know which form to use since in our views.py, we rendered this html page, register.html inside register_user view which contains our form -->
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn btn-outline-success btn-sm">
+      sign up now
+    </button>
+  </form>
+</div>
+
 {% endblock %}
