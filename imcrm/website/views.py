@@ -3,13 +3,15 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 # for flash messages when we login or logout
 from django.contrib import messages
+# to import the form we created in forms.py (the registration/signup form)
+from .forms import SignUpForm
 
 # creating homepage view
 # adding the login feature to the home page itself
 def home(request):
     # we have a form for username and password in the home page, i.e, the login form
     # in the login form if we enter something (POST) and do/invoke the POST method, we need to render 
-    # if the method is GET, that is, we are not POSTing anything, we don't need to authenticate the user or anything
+    # if the method is GET, that is, we are not POSTing (submitting) anything, we don't need to authenticate the user or anything
     if request.method == 'POST':
         username = request.POST['username'] # username will be whatever we are POSTing in the username column
         password = request.POST['password'] # password will be whatever we are POSTing in the password column
@@ -42,6 +44,32 @@ def logout_user(request):
 
 # creating register user view
 def register_user(request):
-    # we render register.html template
-    # render and redirect work differently
-    return render(request, 'register.html', {})
+    if request.method == "POST":
+        # by passing request.POST as parameter, the SignUpForm will be populated with the data the user is POSTing
+        form = SignUpForm(request.POST)
+        # first check if whatever the user typed in the form is valid
+        if form.is_valid():
+            form.save()
+            # to login and authenticate the user immediately after the user registers, cause why not!
+            # django has method for that too
+            # for that first, use the cleaned_data method of django to take out the username and password seperately
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
+            # after getting username and password, authenticate them in!
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.success(request, "Registration successful!")
+            return redirect('home')
+        
+    # else, if the user is not posting and is just visiting the register page,
+    else:
+        # we simply pass in the form without the POST method
+        form = SignUpForm()
+        # we render register.html template
+        # render and redirect work differently
+        # in this part, user is not POSTing anything, therefore we need to render the register.html and provide an empty form
+        # therefore we pass in / create the form instance {'form': form}
+        return render(request, 'register.html', {'form': form})
+
+
+    
