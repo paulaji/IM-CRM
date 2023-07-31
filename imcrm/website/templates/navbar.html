@@ -36,6 +36,7 @@
           </button>
         </li>
         <!-- condition where we need to hide the Sign Up button in the navbar if we are in the register.html page -->
+        <!-- when we use the match function given below, django goes to the urls.py file and looks for register url name -->
         {% elif request.resolver_match.url_name == 'register' %}
         <!-- adding the register user button/link if the user didnt login -->
         <li
