@@ -20,3 +20,5 @@ class Customer(models.Model):
     # so when we call a customer object, it returns a full name string
     def __str__(self):
         return(f"{self.first_name} {self.last_name}")
+    
+# to register out Customer model we just created in the admin panel, go add this in the admin.py file
