@@ -13,3 +13,10 @@ class Customer(models.Model):
     city = models.CharField(max_length=30)
     state = models.CharField(max_length=30)
     zip_code = models.CharField(max_length=30)
+
+    # there is a special method in python (used below) in which an object can be represented as a string
+    # in this case, it is defined such that it returns a string to represent the customer object we created
+    # the string returned is first name + last name which is the full name of the customer
+    # so when we call a customer object, it returns a full name string
+    def __str__(self):
+        return(f"{self.first_name} {self.last_name}")
