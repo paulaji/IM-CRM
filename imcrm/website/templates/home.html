@@ -3,11 +3,25 @@
 <!-- creating a login form -->
 <div class="col-md-6 offset-md-3">
   <br />
+
   <!-- if user is authenticated and logged in, we print hello world and wrap the other things inside an else statement -->
   <!-- django has inbuilt features to check whether a user is logged in or not -->
   <!-- damn django -->
   {% if user.is_authenticated %}
   <h2>Welcome, {{ user.username }}!</h2>
+  <br />
+  <!-- now we need to display all the customer records -->
+  <h4 style="font-weight: 400; color: #777">Customer Records:</h4>
+  <br />
+  <!-- first, check if there are customers -->
+  {% if customers %}
+  <!-- then, loop through each customer object/record -->
+  {% for customer in customers %}
+  <!-- print the customer -->
+  <div style="font-weight: 500">{{customer}} <br /></div>
+  {% endfor %} {% endif %}
+
+  <!-- if user is not logged in -->
   {% else %}
   <!-- <div class="d-grid gap-2 col-6 mx-auto"> -->
   <h4 style="font-weight: 400; color: #777">Login to your account</h4>
