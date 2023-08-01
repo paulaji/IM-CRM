@@ -25,3 +25,8 @@ then cd into the dir with the main file and // python manage.py runserver  // vo
 
 NOTE: we can always add new users through the django admin panel, for small projects, this will do
 but here, we can look at manual ways to register users (preferring the django method though!)
+
+NOTE: whenever we do some database stuff, we must always
+python manage.py makemigrations (this must be done in the parent dir which contains our app, in this case, website)
+then,
+python manage.py migrate
