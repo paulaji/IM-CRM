@@ -13,12 +13,46 @@
   <!-- now we need to display all the customer records -->
   <h4 style="font-weight: 400; color: #777">Customer Records:</h4>
   <br />
+  <!-- to increase and decrease table size -->
+  <div style="font-size: small">
+    <!-- <span class="badge text-bg-warning" style="font-size: medium;">table size: </span> -->
+    <button>small</button>
+    <button>medium</button>
+    <button>large</button>
+  </div>
+  <br />
+  <!-- printing the customers as tables -->
+  <table class="table table-bordered border-dark" style="font-size: medium;">
+    <thead>
+      <tr>
+        <th scope="col" style="background: beige;">Customer_ID</th>
+        <th scope="col" style="background: beige;">Name</th>
+        <th scope="col" style="background: beige;">Phone</th>
+        <th scope="col" style="background: beige;">Email</th>
+        <th scope="col" style="background: beige;">Address</th>
+        <th scope="col" style="background: beige;">City</th>
+        <th scope="col" style="background: beige;">state</th>
+        <th scope="col" style="background: beige;">Zipcode</th>
+        <th scope="col" style="background: beige;">Record_Added</th>
+      </tr>
+    </thead>
   <!-- first, check if there are customers -->
   {% if customers %}
   <!-- then, loop through each customer object/record -->
   {% for customer in customers %}
-  <!-- print the customer -->
-  <div style="font-weight: 500">{{customer}} <br /></div>
+  <tbody class="table-group-divider">
+    <tr>
+      <th scope="row">{{customer.id}}</th>
+      <td>{{customer.first_name}} {{customer.last_name}}</td>
+      <td>{{customer.phone}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.address}}</td>
+      <td>{{customer.city}}</td>
+      <td>{{customer.state}}</td>
+      <td>{{customer.zip_code}}</td>
+      <td>{{customer.created_at}}</td>
+    </tr>
+  </tbody>
   {% endfor %} {% endif %}
 
   <!-- if user is not logged in -->
