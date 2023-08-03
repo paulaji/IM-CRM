@@ -125,6 +125,7 @@ def customer_record(request, pk):
         try:
             customer_data = Customer.objects.get(id=pk)
             return render(request, 'record.html', {'customer_data': customer_data})
+        # it is so convenient that django provides us with these features
         except ObjectDoesNotExist:
             messages.error(request, "Record does not exist!")
             return redirect('home')
