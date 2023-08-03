@@ -111,7 +111,7 @@ def customer_record(request, pk):
         # while python generally allows us to name the variable and function, the same name, it is good practice not to do so
         customer_data = Customer.objects.get(id=pk)
         # pass the individual record we retrieved
-        return render(request, 'register.html', {'customer_data': customer_data})
+        return render(request, 'record.html', {'customer_data': customer_data})
     
 
     # else if the user is not authenticated
