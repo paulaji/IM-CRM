@@ -8,6 +8,9 @@ from .forms import SignUpForm
 # importing the Customer datamodel we just created so that we can display all the records
 from .models import Customer
 
+# if an object doesnt exist, eg, if we only have two records and we try to manually enter localhost:8000/record/3
+from django.core.exceptions import ObjectDoesNotExist
+
 
 
 # creating homepage view
@@ -109,9 +112,22 @@ def customer_record(request, pk):
         # store into the customer variable, the Customer object with the id which is the primary key (the integer number) we are supposedly passing in with our request
         # initially the variable below was called customer_record, but since the function also has the name customer_record, it would be good to change the variable name just to avoid any confusions
         # while python generally allows us to name the variable and function, the same name, it is good practice not to do so
-        customer_data = Customer.objects.get(id=pk)
+        # customer_data = Customer.objects.get(id=pk) - this is an original code
         # pass the individual record we retrieved
-        return render(request, 'record.html', {'customer_data': customer_data})
+        # return render(request, 'record.html', {'customer_data': customer_data}) - this is an original code
+
+        # now that we have checked for if the user is logged in,
+        # we have to check for another condition such that the int/pk which is getting passed after the localhost:8000/record/1 exists
+        # the integer depends on the number of records
+        # if one record exists localhost:8000/record/1, this would take to that record
+        # if only two records exist and we try to enter localhost:8000/record/3, it must return an error
+        # the statements below are for the cases such that people try to manually enter a url like localhost:8000/record/3 (in which something doesnt exist)
+        try:
+            customer_data = Customer.objects.get(id=pk)
+            return render(request, 'record.html', {'customer_data': customer_data})
+        except ObjectDoesNotExist:
+            messages.error(request, "Record does not exist!")
+            return redirect('home')
     
 
     # else if the user is not authenticated
