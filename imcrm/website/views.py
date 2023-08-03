@@ -95,4 +95,27 @@ def register_user(request):
 
 
 
+# when we want to view a specific record clicking on the ID
+# in this, compared to the others, we are not just passing in the request, we also pass the pk
+# the passing of primary key is to access a specific record based off the id and it will look like 
+# localhost:8000/record/2 where 2 is the record id
+def customer_record(request, pk):
+
+
+    # only make this functionality available if the user is logged in
+    # that is, if any person just goes to the url and types localhost:8000/record/2, they should not be able to access it
+    if request.user.is_authenticated:
+        # retrieve the specific record with the id
+        # store into the customer variable, the Customer object with the id which is the primary key (the integer number) we are supposedly passing in with our request
+        # initially the variable below was called customer_record, but since the function also has the name customer_record, it would be good to change the variable name just to avoid any confusions
+        # while python generally allows us to name the variable and function, the same name, it is good practice not to do so
+        customer_data = Customer.objects.get(id=pk)
+        # pass the individual record we retrieved
+        return render(request, 'register.html', {'customer_data': customer_data})
     
+
+    # else if the user is not authenticated
+    # throw in an error message when they try to access the page with an id/pk extension in the url
+    else:
+        messages.error(request, "Login to view records!")
+        return redirect('home')
