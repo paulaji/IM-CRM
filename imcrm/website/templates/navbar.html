@@ -18,6 +18,26 @@
         <!-- adding the logout button to the navbar -->
         <!-- going to write logic such that only if a user is logged in, the logout button will appear -->
         {% if user.is_authenticated %}
+        <!-- adding a home button such that users can navigate to the home page -->
+        <li class="nav-item">
+          <button
+            style="
+              background-color: #222;
+              border: 1px solid beige;
+              padding: 0px 1px;
+              border-radius: 5px;
+              margin: 3px;
+            "
+          >
+            <a
+              class="nav-link"
+              href="{% url 'home' %}"
+              style="color: #fff; font-size: small"
+              >Home</a
+            >
+          </button>
+        </li>
+        <!-- adding the logout button if user is logged in -->
         <li class="nav-item">
           <button
             style="
@@ -25,6 +45,7 @@
               border: 1px solid beige;
               padding: 0px 1px;
               border-radius: 5px;
+              margin: 3px;
             "
           >
             <a
