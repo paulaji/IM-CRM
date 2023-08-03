@@ -1,1 +1,59 @@
+{% extends 'base.html' %}
+<!--  -->
+{% block content %}
+<!--  -->
+<!-- here we will show the user the individual customer record -->
+<h4 style="font-weight: 100; color: #999">
+  Individual Customer Record of
+  <span style="font-weight: 300; color: #333"
+    >{{customer_data.first_name}} {{customer_data.last_name}}</span
+  >
+</h4>
+<br />
+<!-- it is as easy as this to access a customer record -->
+<!-- in our views.py, we have defined this block of code -->
+<!-- customer_data = Customer.objects.get(id=pk)
+            return render(request, 'record.html', {'customer_data': customer_data}) -->
+<!-- this will store into the variable the Customer object with the id  -->
+<!-- and in the return part, it will render the record.html page by passing the variable as parameter in which we stored the customer id -->
+<!--  -->
+<!--  -->
+<!-- adding a card styling for the record -->
+<div class="card" style="width: 18rem">
+  <div
+    class="card-header"
+    style="font-weight: 500; background: #222; color: beige"
+  >
+    <span style="font-weight: 400">Customer Name:</span>
+    {{customer_data.first_name}} {{customer_data.last_name}}
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <span style="font-weight: 300">Phone:</span> {{customer_data.phone}}
+    </li>
+    <li class="list-group-item">
+      <span style="font-weight: 300">Email:</span> {{customer_data.email}}
+    </li>
+    <li class="list-group-item">
+      <span style="font-weight: 300">Address:</span> {{customer_data.address}}
+    </li>
+    <li class="list-group-item">
+      <span style="font-weight: 300">City:</span> {{customer_data.city}}
+    </li>
+    <li class="list-group-item">
+      <span style="font-weight: 300">State:</span> {{customer_data.state}}
+    </li>
+    <li class="list-group-item">
+      <span style="font-weight: 300">Zipcode:</span> {{customer_data.zip_code}}
+    </li>
+    <li class="list-group-item">
+      <span style="font-weight: 300">Created_at:</span>
+      {{customer_data.created_at}}
+    </li>
+  </ul>
+  <div class="card-footer" style="font-weight: 500">
+    <span style="font-weight: 400">Customer_ID:</span> {{customer_data.id}}
+  </div>
+</div>
+{% endblock %}
 
