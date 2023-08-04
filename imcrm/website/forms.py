@@ -74,15 +74,32 @@ class SignUpForm(UserCreationForm):
 # adding new customer record form
 # we inherit the forms.ModelForm class so that we can create a form for the model we defined in models.py
 # the model we defined is called Customer
+# the last parameter error_messages is a custom way to write a message instead of every field having the message This field is required. when we set the required=True
 class AddCustomerRecordForm(forms.ModelForm):
-    first_name = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"firstname"}))
-    last_name = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"lastname"}))
-    phone = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"phone"}))
-    email = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"email"}))
-    address = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"address"}))
-    city = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"city"}))
-    state = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"state"}))
-    zip_code = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"zip_code"}))
+    first_name = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":""}), error_messages={
+            'required': 'Firstname:',
+        })
+    last_name = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":""}),error_messages={
+            'required': 'Lastname:',
+        })
+    phone = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":""}),error_messages={
+            'required': 'Phone:',
+        })
+    email = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":""}),error_messages={
+            'required': 'Email:',
+        })
+    address = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":""}),error_messages={
+            'required': 'Address:',
+        })
+    city = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":""}),error_messages={
+            'required': 'City:',
+        })
+    state = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":""}),error_messages={
+            'required': 'State:',
+        })
+    zip_code = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":""}),error_messages={
+            'required': 'Zipcode:',
+        })
     # created_at = is not needed because django does that for us
 
     # now we need to add the meta data
@@ -94,4 +111,3 @@ class AddCustomerRecordForm(forms.ModelForm):
         # but in SignUpForm class, we inherit UserCreationForm and add some extra fields which are not in-built in it
         # exclude = ("user",) - previous code, guess this didn't work and i had to add the fields manually
         fields = ("first_name", "last_name", "phone", "email", "address", "city", "state", "zip_code")
-
