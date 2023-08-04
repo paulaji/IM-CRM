@@ -152,6 +152,8 @@ def delete_record(request, pk):
             # deleting is fairly simple
             # we get the record details using the GET and pk and store it into a variable
             record_to_delete = Customer.objects.get(id=pk)
+            # delete the record
+            record_to_delete.delete()
             # send them a flash message after the successful deletion of a record
             messages.info(request, "Record deleted!")
             return redirect('home')
