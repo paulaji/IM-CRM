@@ -111,7 +111,7 @@
           <!-- adding the delete functionality -->
           <!-- we redirect to the delete_record url and pass in customer_data.id as the second parameter to delete that sepcific record with the mentioned id -->
           <span style="font-weight: bold"
-            ><a href="{% 'delete_record' customer_data.id %}">DELETE</a></span
+            ><a href="{% url 'delete_record' customer_data.id %}">DELETE</a></span
           >
         </button>
       </div>
