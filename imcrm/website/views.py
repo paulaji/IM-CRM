@@ -165,7 +165,7 @@ def delete_record(request, pk):
         
     # else if the user is not logged in
     else:
-        messages.error(request, "You are not autherized to do such operations! Please login first.")
+        messages.error(request, "You do not have the permission!")
         return redirect('home')
     
 
