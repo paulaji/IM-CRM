@@ -1,4 +1,17 @@
 {% extends 'base.html' %} {% block content %}
 <!-- add customer record  -->
-<h4 style="font-weight: 100; color: #999">New Customer Record</h4>
+<div class="col-md-6 offset-md-3">
+  <h4 style="font-weight: 100; color: #999">New Customer Record</h4>
+  <br />
+  <form method="POST" action="{% url 'add_record' %}">
+    {% csrf_token %}
+    <!-- creating an add record form -->
+    {{ form.as_p }}
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <button type="submit" class="btn btn-outline-success btn-sm">
+        Add Record
+      </button>
+    </div>
+  </form>
+</div>
 {% endblock %}
