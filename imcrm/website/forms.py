@@ -11,6 +11,11 @@ from django.contrib.auth.models import User
 # importing forms from Django
 from django import forms
 
+# import our Customer model from models.py so that we can create a form for that model for record insertion
+from .models import Customer
+
+
+
 # creating a class which inherits UserCreationForm we just imported
 class SignUpForm(UserCreationForm):
 
@@ -65,4 +70,28 @@ class SignUpForm(UserCreationForm):
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Re-enter your password for confirmation.</small></span>'
 
 
+
+# adding new customer record form
+# we inherit the forms.ModelForm class so that we can create a form for the model we defined in models.py
+# the model we defined is called Customer
+class AddCustomerRecordForm(forms.ModelForm):
+    first_name = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"firstname"}))
+    last_name = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"lastname"}))
+    phone = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"phone"}))
+    email = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"email"}))
+    address = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"address"}))
+    city = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"city"}))
+    state = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"state"}))
+    zip_code = forms.CharField(label="", required=True, widget=forms.TextInput(attrs={"class": "form-control", "placeholder":"zip_code"}))
+    # created_at = is not needed because django does that for us
+
+    # now we need to add the meta data
+    class Meta:
+        # specify the model
+        model = Customer
+        # previously, in the SignUpForm class, we added the fields in Meta explicitly, inorder to avoid that, we can use the below statement
+        # here, explicit addition is not required since we are defining all fields by ourselves
+        # but in SignUpForm class, we inherit UserCreationForm and add some extra fields which are not in-built in it
+        # exclude = ("user",) - previous code, guess this didn't work and i had to add the fields manually
+        fields = ("first_name", "last_name", "phone", "email", "address", "city", "state", "zip_code")
 
