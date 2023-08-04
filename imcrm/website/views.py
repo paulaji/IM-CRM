@@ -136,3 +136,22 @@ def customer_record(request, pk):
     else:
         messages.error(request, "Login to view records!")
         return redirect('home')
+
+
+
+# adding a delete record view
+# we are not just passing in the request like in the previous case, but also passing the pk (primary key) to access and delete that specific record
+def delete_record(request, pk):
+    # first of all check if the user is logged in
+    if request.user.is_authenticated:
+        # deleting is fairly simple
+        # we get the record details using the GET and pk and store it into a variable
+        record_to_delete = Customer.objects.get(id=pk)
+        # then use the delete function on that variable
+        record_to_delete.delete()
+        # send them a flash message after the successful deletion of a record
+        messages.info(request, "Record deleted!")
+        return redirect('home')
+    else:
+        messages.error(request, "You are not autherized to do such operations!")
+        return redirect('home')
