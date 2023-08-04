@@ -6,10 +6,11 @@
 <!-- django has inbuilt features to check whether a user is logged in or not -->
 <!-- damn django -->
 {% if user.is_authenticated %}
-<h2>Welcome, {{ user.username }}!</h2>
-<br />
+<h2>
+  <span style="font-weight: 100; color: #999">Welcome,</span>
+  <span style="font-weight: 500; color: #333">{{ user.username}}!</span>
+</h2>
 <!-- now we need to display all the customer records -->
-<h4 style="font-weight: 300; color: #777">All Customer Records:</h4>
 <!-- to increase and decrease table size -->
 <!-- maybe consider adding this later -->
 <!-- <div style="font-size: small">
@@ -19,10 +20,17 @@
         <button>large</button>
     </div> -->
 <br />
+<!-- add a button to add new records -->
+<button class="btn btn-outline-secondary btn-sm">
+  <a href="{% url 'add_record' %}">+ Add Customer Record</a>
+</button>
+<br />
+<br />
+<h4 style="font-weight: 500">All Customer Records:</h4>
 <!-- a note saying if we press on the id of each record, it will expand -->
-<h6 style="font-weight: 300; color: #777">
+<span style="font-weight: 100; color: #777">
   NOTE: Click on a record's Customer_ID to view it individually.
-</h6>
+</span>
 <!-- printing the customers as tables -->
 <table class="table table-bordered border-dark table-sm">
   <thead class="table-dark">
