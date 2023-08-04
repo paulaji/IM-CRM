@@ -108,7 +108,11 @@
           Close
         </button>
         <button type="button" class="btn btn-outline-danger btn-sm">
-          <span style="font-weight: bold">DELETE</span>
+          <!-- adding the delete functionality -->
+          <!-- we redirect to the delete_record url and pass in customer_data.id as the second parameter to delete that sepcific record with the mentioned id -->
+          <span style="font-weight: bold"
+            ><a href="{% 'delete_record' customer_data.id %}">DELETE</a></span
+          >
         </button>
       </div>
     </div>
