@@ -142,16 +142,31 @@ def customer_record(request, pk):
 # adding a delete record view
 # we are not just passing in the request like in the previous case, but also passing the pk (primary key) to access and delete that specific record
 def delete_record(request, pk):
+
     # first of all check if the user is logged in
     if request.user.is_authenticated:
-        # deleting is fairly simple
-        # we get the record details using the GET and pk and store it into a variable
-        record_to_delete = Customer.objects.get(id=pk)
-        # then use the delete function on that variable
-        record_to_delete.delete()
-        # send them a flash message after the successful deletion of a record
-        messages.info(request, "Record deleted!")
-        return redirect('home')
+        # we need to check if the record exists, if the record is already deleted and a user tries to do manual url entry for a record which doesn't exist, we need to return an error statement, or they will get a weird error message
+        # for eg: if we have only 3 records of id: 1, 2 and 3 respectively and a user manually goes and types the url http://127.0.0.1:8000/delete_record/4, which does not exist, which means deletion is not possible, we need to display an error message
+        try:
+            # deleting is fairly simple
+            # we get the record details using the GET and pk and store it into a variable
+            record_to_delete = Customer.objects.get(id=pk)
+            # send them a flash message after the successful deletion of a record
+            messages.info(request, "Record deleted!")
+            return redirect('home')
+        # and if the record does not exist
+        # it is so convenient that django provides us with these features
+        except ObjectDoesNotExist:
+            messages.error(request, "Record does not exist!")
+            return redirect('home')
+        
+    # else if the user is not logged in
     else:
-        messages.error(request, "You are not autherized to do such operations!")
+        messages.error(request, "You are not autherized to do such operations! Please login first.")
         return redirect('home')
+    
+
+
+# to add new records
+def add_record(request):
+    return render(request, 'add_record.html')
