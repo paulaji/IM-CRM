@@ -4,7 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 # for flash messages when we login or logout
 from django.contrib import messages
 # to import the form we created in forms.py (the registration/signup form)
-from .forms import SignUpForm
+# also, import the AddCustomerRecordForm
+from .forms import SignUpForm, AddCustomerRecordForm
 # importing the Customer datamodel we just created so that we can display all the records
 from .models import Customer
 
@@ -169,4 +170,23 @@ def delete_record(request, pk):
 
 # to add new records
 def add_record(request):
-    return render(request, 'add_record.html')
+    # store the AddCustomerRecordForm in a variable
+    # and check if the request is POST request or else do nothing, just render the page with the form
+    form = AddCustomerRecordForm(request.POST or None)
+    # inorder to POST this form, we must check if the user is logged in
+    if request.user.is_authenticated:
+        # now check if the user is POSTing the form or just viewing
+        if request.method == "POST":
+            # now check if the form is valid / that is, if the user properly entered all the details in the proper format or filled the fields which has required = True
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Customer Record added successfully!")
+                # then redirect to the homepage after completion
+                return redirect('home')
+        # if the user is not POSTing the form, that is, if the user is just visiting the page, pass in the form
+        return render(request, "add_record.html", {'form':form})
+    # else if the user is not authenticated
+    else:
+        messages.error(request, "You do not have the permission!")
+        return redirect('home')
+
