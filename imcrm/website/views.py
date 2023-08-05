@@ -192,3 +192,37 @@ def add_record(request):
         messages.error(request, "You do not have the permission!")
         return redirect('home')
 
+
+
+# update/edit record view
+def update_record(request, pk):
+    # only let them update the record if they are logged in 
+    if request.user.is_authenticated:
+        # now to prevent manual url entry and show another error message if the object does not exist
+        try:
+            # grab the current record
+            record_to_update = Customer.objects.get(id=pk)
+            # then, display the AddCustomerRecordFrom with already populated fields because we are going to edit it and not start from the scratch
+            # for that, we pass in an argument of instance
+            # the instance is the record which we obtained using the id, that is, in our case, record_to_update
+            form = AddCustomerRecordForm(request.POST or None, instance=record_to_update)
+            # now that we got the form, check if the method is POST
+            if request.method == "POST":
+                # now check if the method is valid
+                if form.is_valid():
+                    # if yes, save the form
+                    form.save()
+                    messages.success(request, "Record updated successfully!")
+                    return redirect('home')
+            # now if the user is not POSTing, we anyways need to show them the form
+            else:
+                return render(request, "update_record.html", {'form':form})
+        # the part which displays error message is they try to access an object which does not exist using the update_record/
+        except ObjectDoesNotExist:
+            messages.error(request, "Record does not exist!")
+            return redirect('home')
+    # if the user is not logged in
+    else:
+        messages.error(request, "You do not have the permission!")
+        return redirect('home')
+
