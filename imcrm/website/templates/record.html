@@ -62,8 +62,10 @@
   ><button class="btn btn-outline-secondary btn-sm">< Home</button></a
 >
 <!-- adding an update record button -->
-<a href="{% url 'update_record' %}"
-  ><button class="btn btn-outline-primary btn-sm">UPDATE THIS RECORD</button></a
+<a href="{% url 'update_record' customer_data.id %}"
+  ><button class="btn btn-outline-primary btn-sm">
+    EDIT/UPDATE THIS RECORD
+  </button></a
 >
 <!-- adding a delete button 😢 -->
 <!-- this will be programmed in such a way that a modal pops up asking for delete confirmation -->
@@ -72,7 +74,7 @@
   data-bs-toggle="modal"
   data-bs-target="#staticBackdrop"
 >
-  X <span style="font-weight: bold">DELETE THIS RECORD</span>
+  X <span>DELETE THIS RECORD</span>
 </button>
 
 <!-- the modal -->
