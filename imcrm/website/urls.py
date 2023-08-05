@@ -19,4 +19,6 @@ urlpatterns = [
     path('delete_record/<int:pk>', views.delete_record, name="delete_record"),
     # url to add new record
     path('add_record', views.add_record, name="add_record"),
+    # url to edit/update the record
+    path('update_record/<int:pk>', views.update_record, name="update_record")
 ]
