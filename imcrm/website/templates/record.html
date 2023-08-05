@@ -61,6 +61,10 @@
 <a href="{% url 'home' %}"
   ><button class="btn btn-outline-secondary btn-sm">< Home</button></a
 >
+<!-- adding an update record button -->
+<a href="{% url 'update_record' %}"
+  ><button class="btn btn-outline-primary btn-sm">UPDATE THIS RECORD</button></a
+>
 <!-- adding a delete button 😢 -->
 <!-- this will be programmed in such a way that a modal pops up asking for delete confirmation -->
 <button
@@ -111,7 +115,9 @@
           <!-- adding the delete functionality -->
           <!-- we redirect to the delete_record url and pass in customer_data.id as the second parameter to delete that sepcific record with the mentioned id -->
           <span style="font-weight: bold"
-            ><a href="{% url 'delete_record' customer_data.id %}">DELETE</a></span
+            ><a href="{% url 'delete_record' customer_data.id %}"
+              >DELETE</a
+            ></span
           >
         </button>
       </div>
