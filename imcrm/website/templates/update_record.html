@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+<!-- add customer record  -->
+<div class="col-md-6 offset-md-3">
+  <h4 style="font-weight: 100; color: #999">
+    Update
+    <span style="font-weight: 300; color: #333">
+      <!-- we use form. to access the fields because this is what is being passed into this html page -->
+      {{form.first_name.value}} {{form.last_name.value}}'s</span
+    >
+    Record
+  </h4>
+  <br />
+  <form method="POST">
+    {% csrf_token %}
+    <!-- creating an add record form -->
+    {{ form.as_p }}
+    <div class="d-grid gap-2 col-6 mx-auto">
+      <button type="submit" class="btn btn-outline-success btn-sm">
+        Update Record
+      </button>
+    </div>
+    <button class="btn btn-outline-secondary btn-sm">
+      <a href="{% url 'home' %}">< Home</a>
+    </button>
+  </form>
+</div>
+{% endblock %}
