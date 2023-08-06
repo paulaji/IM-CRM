@@ -7,7 +7,7 @@ import mysql.connector
 
 # to connect to databas
 dataBase = mysql.connector.connect(
-    host = 'localhost',
+    host = 'your host here',
     user = 'your username here',
     passwd = 'your password here'
 )
@@ -16,6 +16,6 @@ dataBase = mysql.connector.connect(
 cursorObject = dataBase.cursor()
 
 # create database
-cursorObject.execute("CREATE DATABASE thorappan")
+cursorObject.execute("CREATE DATABASE yourdatabasenamehere")
 
 print("DONE!")
