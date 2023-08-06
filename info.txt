@@ -30,3 +30,6 @@ NOTE: whenever we do some database stuff, we must always
 python manage.py makemigrations (this must be done in the parent dir which contains our app, in this case, website)
 then,
 python manage.py migrate
+
+whenever we are trying to dockerize, and if we want to create a requirements.txt file,
+pip freeze > requirements.txt
