@@ -12,3 +12,8 @@ WORKDIR /app
 
 # add/copy everything to the working directory which we names as app
 COPY . /app/
+
+# now that we might have to install django and other stuff inside our python project
+# for that we have to create a requirements.txt file
+# now add the requirements.txt file in the working directory app we set
+COPY ./requirements.txt /app/requirements.txt
