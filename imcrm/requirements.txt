@@ -1,0 +1,6 @@
+# generated using pip freeze > requirements.txt
+asgiref==
+Django==
+mysql==
+# etc.
+# all the requirements will come if you use the command
