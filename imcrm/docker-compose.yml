@@ -1,1 +1,37 @@
+version: "3"
+
+# We did this as a Django application, therefore this is a web application.
+# We need to specify the services we are planning to use, including the web service and the database service (MySQL).
+services:
+  web:
+    # Build the current folder.
+    build: .
+    # Command to run the Django development server on all interfaces (0.0.0.0) on port 8000.
+    command: python manage.py runserver 0.0.0.0:port
+    # Bind the ports - map port 8000 from the container to port 8000 on the host machine.
+    ports:
+      - "port:port"
+    # Add a dependency on the MySQL service.
+    depends_on:
+      - db
+
+  # Define the MySQL service.
+  db:
+    # Use the official MySQL image from Docker Hub.
+    image: mysql:latest
+    # Set the environment variables for MySQL configuration.
+    environment:
+      MYSQL_ROOT_PASSWORD: your_password
+      MYSQL_DATABASE: your_db
+      MYSQL_USER: adfknbaokpdfnaf
+      MYSQL_PASSWORD: sdfsdgslkgkboslvbpsvnbpsdnvpsindvpisnivd
+    # Bind the MySQL container's port 3306 to the host machine.
+    ports:
+      - "port:port"
+    # Optionally, specify a volume to persist MySQL data.
+    # volumes:
+    #   - mysql_data:/var/lib/mysql
+# Optionally, define a named volume to persist MySQL data.
+# volumes:
+#   mysql_data:
 
