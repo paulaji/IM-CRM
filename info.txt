@@ -32,3 +32,8 @@ then,
 python manage.py migrate
 
 pip freeze > requirements.txt // whenever we are trying to dockerize, and if we want to create a requirements.txt file,
+
+whenever we have multiple docker containers (the server, the application etc), it is better to work with docker compose
+
+after writing the docker compose and making sure docker-desktop is running,
+in terminal, docker-compose build
