@@ -31,5 +31,4 @@ python manage.py makemigrations (this must be done in the parent dir which conta
 then,
 python manage.py migrate
 
-whenever we are trying to dockerize, and if we want to create a requirements.txt file,
-pip freeze > requirements.txt
+pip freeze > requirements.txt // whenever we are trying to dockerize, and if we want to create a requirements.txt file,
